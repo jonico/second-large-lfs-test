@@ -16,7 +16,9 @@ jobs:
       with:
         lfs: false
         clean: true
-    - run: |
+    - name: Update GIT LFS objects
+      run: |
         git config credential.helper "! f() { echo username=x-access-token; echo password=$GITHUB_TOKEN; };f"
         git lfs pull
-      env: GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
