@@ -16,3 +16,4 @@ jobs:
       with:
         lfs: true
         clean: true
+        ssh-key: ${{secrets.sshkey}} 
