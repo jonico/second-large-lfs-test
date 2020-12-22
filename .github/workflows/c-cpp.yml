@@ -14,6 +14,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        lfs: true
+        lfs: false
         clean: true
-        ssh-key: ${{secrets.sshkey}} 
+        ssh-key: ${{secrets.sshkey}}
+    - run: git config --local --unset-all http.https://github.com/.extraheader
+    - run: GIT_TRACE=1 git lfs fetch --all
