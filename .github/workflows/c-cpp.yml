@@ -12,7 +12,10 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
       with:
-        lfs: true
+        lfs: false
         clean: true
+        ssh-key: ${{secrets.sshkey}}
+    - run: git config --local --unset-all http.https://github.com/.extraheader
+    - run: git lfs pull
